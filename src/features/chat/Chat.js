@@ -17,6 +17,7 @@ export const Chat = () => {
         <div>
             <ThemeProvider theme={theme}>
                 {/* <TablaChats /> */}
+                asdasda
             </ThemeProvider>
         </div>
     )

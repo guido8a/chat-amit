@@ -17,7 +17,7 @@ export const Widget = () => {
   const solicitudesAprobadas = useSelector(state => state.app.solicitudesAprobadas)
   const solicitudAprobada = useSelector(state => state.app.solicitudAprobada)
   const [anchorEl1, setAnchorEl1] = React.useState(null)
-  const handleClick = (e) => setAnchorEl1(e.currentTarget)
+  // const handleClick = (e) => setAnchorEl1(e.currentTarget)
   const handleClose = () => {setAnchorEl1(null)}
   const open = Boolean(anchorEl1)
   const mid = open ? 'simple-popover' : undefined
@@ -25,6 +25,8 @@ export const Widget = () => {
   const instanciaTarea = useSelector(state => state.app.instanciaTarea)
   const instanciaProceso = useSelector(state => state.app.instanciaProceso)
   const navigate = useNavigate()
+
+  const handleClick = () => {navigate('/chat')}
 
   useEffect(()=> {
     if(!f.isValid(instanciaTarea.id)) {navigate('/')}
@@ -34,11 +36,11 @@ export const Widget = () => {
 
   // if(f.isValid(instanciaTarea.id) && f.isValid(instanciaProceso.id) ) {
 
-    return(
-      <>
-      <Chat />
-      </>
-    )
+    // return(
+    //   <>
+    //   <Chat />
+    //   </>
+    // )
 
     // const formulario = {
     //  '' : () => <Chat />,
@@ -59,28 +61,30 @@ export const Widget = () => {
 
 
 
-  // return (
-  //   <>
+  return (
+    <>
 
-  //     <Box aria-describedby={mid} onClick={handleClick} sx={{height:'100%'}}>
-  //       <FactCheckOutlinedIcon sx={{color:'white', height:'100%', fontSize:'3rem', fontWeight:'lighter'}} />
-  //     </Box>
-  //     <Popover id={mid}
-  //              open={open}
-  //              anchorEl={anchorEl1}
-  //              onClose={handleClose}
-  //              transformOrigin={{
-  //                vertical: 'top',
-  //                horizontal: 'right',
-  //              }}
-  //              anchorOrigin={{
-  //                vertical: 'bottom',
-  //                horizontal: 'right',
-  //              }} >
-  //       <Box sx={{p:'0.8rem'}}>
-  //         Acceso al Chat
-  //       </Box>
-  //     </Popover>
-  //   </>
-  // )
+      <Box aria-describedby={mid} onClick={handleClick} sx={{height:'100%'}}>
+        <FactCheckOutlinedIcon sx={{color:'white', height:'100%', fontSize:'3rem', fontWeight:'lighter'}} />
+      </Box>
+      <Popover id={mid}
+               open={open}
+               anchorEl={anchorEl1}
+               onClose={handleClose}
+               transformOrigin={{
+                 vertical: 'top',
+                 horizontal: 'right',
+               }}
+               anchorOrigin={{
+                 vertical: 'bottom',
+                 horizontal: 'right',
+               }} >
+        <Chat />
+        <Box sx={{p:'0.8rem'}}>
+          Acceso al Chat
+          
+        </Box>
+      </Popover>
+    </>
+  )
 }
