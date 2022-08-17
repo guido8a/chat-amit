@@ -26,6 +26,7 @@ import {P15Seguimiento} from 'src/features/P15SegumientoAutorizacion'
 import {P09Holotipos} from "src/features/P09SalidaHolotipos"
 import {P16CerrarAutorizacion} from "src/features/P16CerrarAutorizacion"
 import {P17EvaluarCumplimiento} from "src/features/P17EvaluarCumplimiento"
+import {Chat} from "src/features/chat/Chat"
 
 const App = () => {
   const investigador = useSelector(state => state.app.investigador)
@@ -66,6 +67,7 @@ const App = () => {
         <Route path='/holotipos' element={<P09Holotipos />} />
         <Route path='/cerrarsolicitud' element={<P16CerrarAutorizacion />} />
         <Route path='/evaluar' element={<P17EvaluarCumplimiento />} />
+        <Route path='/chat' element={<Chat />} />
         <Route path='*' element={<Bandejas />} />
       </Routes>
     </>

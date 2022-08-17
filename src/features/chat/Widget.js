@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
 import Typography from '@mui/material/Typography'
 import {Checkbox, ListItem, ListItemIcon, ListItemText, Popover} from '@mui/material'
@@ -9,6 +9,8 @@ import CropSquareIcon from '@mui/icons-material/CropSquare';
 import SquareIcon from '@mui/icons-material/Square';
 import {handleSetSolicitudAprobada} from 'src/features/App/sliceApp'
 import {f} from 'src/commons/f'
+import { Chat } from './Chat';
+import { useNavigate } from 'react-router-dom'
 
 export const Widget = () => {
   const dispatch = useDispatch()
@@ -20,27 +22,65 @@ export const Widget = () => {
   const open = Boolean(anchorEl1)
   const mid = open ? 'simple-popover' : undefined
 
-  return (
-    <>
-      <Box aria-describedby={mid} onClick={handleClick} sx={{height:'100%'}}>
-        <FactCheckOutlinedIcon sx={{color:'white', height:'100%', fontSize:'3rem', fontWeight:'lighter'}} />
-      </Box>
-      <Popover id={mid}
-               open={open}
-               anchorEl={anchorEl1}
-               onClose={handleClose}
-               transformOrigin={{
-                 vertical: 'top',
-                 horizontal: 'right',
-               }}
-               anchorOrigin={{
-                 vertical: 'bottom',
-                 horizontal: 'right',
-               }} >
-        <Box sx={{p:'0.8rem'}}>
-          Acceso al Chat
-        </Box>
-      </Popover>
-    </>
-  )
+  const instanciaTarea = useSelector(state => state.app.instanciaTarea)
+  const instanciaProceso = useSelector(state => state.app.instanciaProceso)
+  const navigate = useNavigate()
+
+  useEffect(()=> {
+    if(!f.isValid(instanciaTarea.id)) {navigate('/')}
+  }, [instanciaTarea, navigate])
+
+  useEffect(() => {window.scrollTo(0, 0)}, [])
+
+  // if(f.isValid(instanciaTarea.id) && f.isValid(instanciaProceso.id) ) {
+
+    return(
+      <>
+      <Chat />
+      </>
+    )
+
+    // const formulario = {
+    //  '' : () => <Chat />,
+    // }[instanciaTarea?.tareaCodigoTarea]
+    
+    // if(f.isValid(formulario)) {
+    //   return formulario()
+    // } else {
+    //   return <Box sx={{m:'80px 0 0 0'}}>{`ERROR, EN FORMULARIO PARA TAREA ${instanciaTarea?.nombreTarea} .- (${instanciaTarea?.tareaCodigoTarea})`}</Box>
+    // }
+  // }
+  // else return (
+  //   <Box sx={{m:'80px 0 0 0', height:'80px'}}>
+  //     {'loading'}
+  //   </Box>
+  // )
+
+
+
+
+  // return (
+  //   <>
+
+  //     <Box aria-describedby={mid} onClick={handleClick} sx={{height:'100%'}}>
+  //       <FactCheckOutlinedIcon sx={{color:'white', height:'100%', fontSize:'3rem', fontWeight:'lighter'}} />
+  //     </Box>
+  //     <Popover id={mid}
+  //              open={open}
+  //              anchorEl={anchorEl1}
+  //              onClose={handleClose}
+  //              transformOrigin={{
+  //                vertical: 'top',
+  //                horizontal: 'right',
+  //              }}
+  //              anchorOrigin={{
+  //                vertical: 'bottom',
+  //                horizontal: 'right',
+  //              }} >
+  //       <Box sx={{p:'0.8rem'}}>
+  //         Acceso al Chat
+  //       </Box>
+  //     </Popover>
+  //   </>
+  // )
 }
