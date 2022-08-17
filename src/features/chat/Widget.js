@@ -38,7 +38,7 @@ export const Widget = () => {
                  horizontal: 'right',
                }} >
         <Box sx={{p:'0.8rem'}}>
-          * * * c o n t i n o s . . .
+          Acceso al Chat
         </Box>
       </Popover>
     </>
