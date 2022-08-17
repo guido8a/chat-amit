@@ -1,0 +1,1 @@
+export {Widget as P10ATM} from './Widget'

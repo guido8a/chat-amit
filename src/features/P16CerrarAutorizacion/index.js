@@ -1,0 +1,1 @@
+export {Widget as P16CerrarAutorizacion} from './Widget'

@@ -1,0 +1,1 @@
+export {Widget as P11PermisoExportacion} from './Widget'
