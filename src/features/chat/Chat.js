@@ -17,7 +17,7 @@ export const Chat = () => {
         <div>
             <ThemeProvider theme={theme}>
                 {/* <TablaChats /> */}
-                asdasda
+                Lista de Chats
             </ThemeProvider>
         </div>
     )
